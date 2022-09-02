@@ -1,0 +1,55 @@
+{% extends 'base/list.html' %}
+{% load static %}
+
+{% block head_list %}
+
+    <script src="{% static 'js/test.js' %}"></script>
+{% endblock head_list %}
+
+{% block title %}
+    Listado de pruebas a las aplicaciones webs | Sistema para la correlación de vulnerabilidades webs
+{% endblock title %}
+
+{% block title_list %}
+    Listado de pruebas a la aplicación web ({{ testd.site.name }})
+
+
+{% endblock %}
+
+{% block columns %}
+    <tr>
+        <th>Nombre de la prueba</th>
+        <th>Descripcción de la prueba</th>
+        <th>Fecha de inicio</th>
+        <th>Fecha de Fin</th>
+        <th>Opciones</th>
+    </tr>
+
+{% endblock %}
+
+{% block rows %}
+    {% for test in testall %}
+        <tr>
+            <td scope="col" style="width: 15%;"><a href="{% url 'detail_test' test.id_test %}">  {{ test.title }}</a>
+            </td>
+            <td scope="col" style="width: 15%;">{{ test.description }}</td>
+            <td scope="col" style="width: 15%;">{{ test.target_start }}</td>
+            <td scope="col" style="width: 15%;">{{ test.target_end }}</td>
+            <td scope="col" style="width: 5%;">
+
+                <a href="{% url 'edit_test' test.test_s.id_test_s test.id_test  %}" class="rounded  btn btn-warning btn-sm btn-flat" title="Editar Registro"><i
+                        class="fas fa-edit"></i></a>
+                <a href="{% url 'delete_test' test.test_s.id_test_s test.id_test  %}" type="button" class="rounded btn btn-danger btn-sm btn-flat"
+                   title="Eliminar Registro"><i class="fas fa-trash-alt"></i></a>
+            </td>
+        </tr>
+
+    {% endfor %}
+
+{% endblock %}
+{% block buttons_list %}
+
+    <a href="{% url 'add_test' testd.id_test_s %}" class="btn btn-primary btn-flat btnTest">
+        <i class="fas fa-plus"></i> Nuevo registro
+    </a>
+{% endblock %}

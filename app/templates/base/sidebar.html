@@ -1,0 +1,41 @@
+{% load static %}
+<!-- Sidebar-->
+<aside class="main-sidebar sidebar-dark-primary ">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-link">
+        <img src="/static/img/SCVulnweb.png" alt="SCVulWeb Logo" class="brand-image" />
+        <span class="brand-text font-weight-light">SCVulnWeb</span>
+    </a>
+    <div class="sidebar">
+
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                <li class="nav-item">
+                    <a href="{% url 'site_list'  %}" class="nav-link">
+                        <i class="nav-icon fas fa-globe"></i>
+                        <p>
+                            App Webs </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'test_site_list'  %}" class="nav-link">
+                        <i class="nav-icon fas fa-list-check"></i>
+                        <p>
+                            Pruebas App Webs
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'tool_type_list'  %}" class="nav-link">
+                        <i class="nav-icon fas fa-tools"></i>
+                        <p>
+                            Herramientas
+                        </p>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</aside>

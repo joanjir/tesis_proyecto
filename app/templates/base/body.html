@@ -1,0 +1,49 @@
+{% extends 'base/base.html' %} {% block body %}
+
+<body
+  class="sidebar-mini sidebar-collapse sidebar-mini-md layout-navbar-fixed sidebar-mini-xs"
+  style="height: auto"
+>
+  <div class="wrapper">
+    <!-- Header -->
+    {% include 'base/header.html' %}
+    <!-- Sidebar-->
+    {% include 'base/sidebar.html'%}
+    <div class="content-wrapper">
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="mb-2 row">
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-left">
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">{% block content %}
+
+        {% endblock %}</div>
+      </section>
+    </div>
+    <!-- Footer -->
+    {% comment %} {% include 'footer.html'%} {% endcomment %}
+  </div>
+
+  <a
+    type="button"
+    class="back-to-top btn bg-secondary"
+    data-toggle="tooltip"
+    data-placement="left"
+    title="Ir arriba"
+    style="display: inline"
+    href="#"
+  >
+    <i class="fas fa-chevron-up"></i>
+  </a>
+  <!-- Block javascript -->
+  {% block javascript %} {% endblock %}
+</body>
+{% endblock %}

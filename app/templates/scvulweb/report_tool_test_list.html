@@ -1,0 +1,61 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'lib/datatables-1.10.20/css/dataTables.bootstrap4.min.css' %}"/>
+<link rel="stylesheet"
+      href="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/css/responsive.bootstrap4.min.css' %}"/>
+<script src="{% static 'lib/datatables-1.10.20/js/jquery.dataTables.js' %}"></script>
+<script src="{% static 'lib/datatables-1.10.20/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/js/responsive.bootstrap4.min.js' %}"></script>
+
+
+<script !src="">
+    $(document).ready(function () {
+        $('#data1').DataTable({});
+    });
+</script>
+
+<div class=" table-responsive">
+    <table class="table table-bordered" id="data1">
+        <thead>
+        <tr>
+            <th>Reportes</th>
+            <th>Archivos</th>
+            <th>Fecha de subida de reporte</th>
+
+            <th>Opciones</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        {% for testimport in testimport %}
+            <tr>
+
+                {% for file in testimport.files.all %}
+                    <td>{{ file.title }}</td>
+                    <td class="text-center"><a href="{{ file.file.url }}" download
+                                               class="rounded btn btn-warning btn-sm btn-flat"
+                                               title="Descargar Archivo XML"><i
+                            class="fas  fa-file-code"> XML</i>
+                    </a></td>
+
+
+                {% endfor %}
+                <td scope="col" style="width: 20%;">{{ testimport.created }}</td>
+
+                <td scope="col" style="width: 5%;">
+                    <a href="#" class="rounded btn btn-warning btn-sm btn-flat"
+                       title="Editar Registro"><i
+                            class="fas fa-edit"></i></a>
+                    <a href="#" type="button"
+                       class="rounded btn btn-danger btn-sm btn-flat"
+                       title="Eliminar Registro"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+
+
+        </tbody>
+    </table>
+</div>
+
+

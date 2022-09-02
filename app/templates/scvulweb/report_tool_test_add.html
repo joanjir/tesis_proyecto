@@ -1,0 +1,68 @@
+{% extends 'base/form.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="card card-primary">
+            <div class=" card-header">
+                <b>
+                    <i class="fas fa-plus"> </i> Reporte de heramienta de detección de vulnerabilidades
+                </b>
+            </div>
+
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-xl-6">
+                        <div class="form-group ">
+                            <label>Herramienta de detección:</label>
+                            <div class="input-group">
+                                {{ tform.test_type }}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-6">
+                        <div class="form-group ">
+                            <label>Nombre del reporte:</label>
+                            <div class="input-group">
+                                {{ tform.title }}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-6">
+                        <div class="form-group ">
+                            <label>Reporte seleccionado:</label>
+                            <div class="input-group">
+                                {{ tform.file }}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary rounded btn-flat btnre">
+                    <i class="fas fa-save"></i> Guardar registro
+                </button>
+                <a href="#" class="btn btn-danger rounded btn-flat">
+                    <i class="fas fa-times"></i> Cancelar
+                </a>
+            </div>
+
+        </div>
+    </form>
+
+
+{% endblock %}
+

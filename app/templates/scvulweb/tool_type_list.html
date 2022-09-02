@@ -1,0 +1,49 @@
+{% extends 'base/list.html' %}
+{% load static %}
+
+{% block head_list %}
+
+    <script src="{% static 'js/test.js' %}"></script>
+{% endblock head_list %}
+
+{% block title %}
+    Listado de pruebas a las aplicaciones webs | Sistema para la correlación de vulnerabilidades webs
+{% endblock title %}
+
+{% block title_list %}
+    Listado de pruebas a las aplicaciones webs
+{% endblock %}
+
+{% block columns %}
+    <tr>
+        <th>Nombre de las app web</th>
+        <th>Nombre de la prueba</th>
+    </tr>
+
+{% endblock %}
+
+{% block rows %}
+    {% for test in tool_type %}
+        <tr>
+            <td scope="col" style="width: 20%;"><a
+                    href="{% url 'edit_Tool_Type' test.id %}"> {{ test.name }}</a></td>
+            <td scope="col" style="width: 20%;">
+                {% if test.active %}
+                    Activo
+                {% elif not test.active %}
+                    No activo
+                {% endif %}
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+
+{% endblock %}
+{% block buttons_list %}
+    <a href="{% url 'add_Tool_Type' %}" class="btn btn-primary btn-flat btnTest">
+        <i class="fas fa-plus"></i> Nuevo registro
+    </a>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base/form.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <form method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="card card-primary">
+            <div class=" card-header">
+                    <b>
+                            <i class="fas fa-plus"> </i> Registrar aplicación web
+                        </b>
+            </div>
+
+            <div class="card-body ">
+
+
+                <div class="row">
+                    {% for field in form.visible_fields %}
+                        <div class="form-group col-sm-12 col-md-6 col-xl-6">
+                            <label> {{ field.label }}:</label>
+
+                            {{ field|add_class:'form-control'|attr:'autocomplete:off' }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary rounded btn-flat btnre">
+                    <i class="fas fa-save"></i> Guardar registro
+                </button>
+                <a href="{% url 'site_list' %}" class="btn btn-danger rounded btn-flat">
+                    <i class="fas fa-times"></i> Cancelar
+                </a>
+            </div>
+        </div>
+
+    </form>
+
+
+{% endblock %}
+
+

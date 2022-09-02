@@ -1,0 +1,29 @@
+{% extends 'base/body.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'lib/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.css' %}">
+
+    <script src="{% static 'lib/moment-2.25.3/moment-with-locales.js' %}"></script>
+    <script src="{% static 'lib/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.js' %}"></script>
+    <link href="{% static 'lib/select2/css/select2.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'lib/select2/css/select2-bootstrap4.min.css' %}" rel="stylesheet"/>
+    <script src="{% static 'lib/select2/js/select2.min.js' %}"></script>
+    <script src="{% static 'lib/select2/js/i18n/es.js' %}"></script>
+    {% block head_form %}
+
+    {% endblock head_form %}
+
+    {% block javascript %}
+
+
+
+    {% endblock javascript %}
+
+{% endblock %}
+
+
+
+
+
+
+

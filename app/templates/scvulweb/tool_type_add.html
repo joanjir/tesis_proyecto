@@ -1,0 +1,56 @@
+{% extends 'base/form.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block head_form %}
+
+
+{% endblock head_form %}
+
+{% block content %}
+    <form method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="card card-primary">
+            <div class=" card-header">
+                <b>
+                    <i class="fas fa-plus"> </i> Registrar Herramienta de detección
+                </b>
+            </div>
+
+            <div class="card-body ">
+
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-8 col-xl-8">
+                        <div class="form-group ">
+                            <label >Nombre de herramienta:</label>
+                            <div class="input-group">
+                                {{ tform.name }}
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-xl-4">
+                        <div class="form-group ">
+                            <label >Estado:</label>
+                            <div class="input-group">
+                                {{ tform.active }}
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary rounded btn-flat btnre">
+                    <i class="fas fa-save"></i> Guardar registro
+                </button>
+                <a href="{% url 'tool_type_list' %}" class="btn btn-danger rounded btn-flat">
+                    <i class="fas fa-times"></i> Cancelar
+                </a>
+            </div>
+        </div>
+
+    </form>
+
+
+{% endblock %}

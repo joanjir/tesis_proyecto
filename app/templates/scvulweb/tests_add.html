@@ -1,0 +1,86 @@
+{% extends 'base/form.html' %}
+
+{% load static %}
+{% load widget_tweaks %}
+{% block head_form %}
+
+    <script src="{% static 'js/tests_form.js' %}"></script>
+
+{% endblock head_form %}
+
+{% block content %}
+    <form method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="card card-primary">
+            <div class=" card-header">
+                <b>
+                    <i class="fas fa-plus"> </i> Registrar prueba 
+                </b>
+            </div>
+
+            <div class="card-body ">
+
+
+                <div class="row">
+
+                    <div class="col-sm-12 col-md-6 col-xl-6">
+                        <div class="form-group ">
+                            <label>Nombre de la prueba:</label>
+                            <div class="input-group">
+                                {{ tform.title }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-6">
+                        <div class="form-group ">
+                            <label>Descripción de la prueba:</label>
+                            <div class="input-group">
+                                {{ tform.description }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-6">
+                        <div class="form-group ">
+                            <label>Fecha de inicio de la prueba:</label>
+                            <div class="input-group">
+                                {{ tform.target_start }}
+                                <div class="input-group-append" data-target="#target_start_test"
+                                    data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-6">
+                        <div class="form-group ">
+                            <label>Fecha de fin de la prueba:</label>
+                            <div class="input-group">
+                                {{ tform.target_end }}
+                                <div class="input-group-append" data-target="#target_end_test"
+                                     data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary rounded btn-flat btnre">
+                    <i class="fas fa-save"></i> Guardar registro
+                </button>
+
+
+                <a href="{% url 'all_test_site' testdd.id_test_s%}" class="btn btn-danger rounded btn-flat">
+                    <i class="fas fa-times"></i> Cancelar
+                </a>
+            </div>
+        </div>
+
+    </form>
+
+
+{% endblock %}

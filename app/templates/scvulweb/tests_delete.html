@@ -1,0 +1,31 @@
+{% extends 'base/form.html' %}
+
+{% block content %}
+       <form method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="card card-primary">
+            <div class=" card-header">
+                    <b>
+                            <i class="fas fa-"> </i> Eliminar aplicación web
+                        </b>
+            </div>
+
+            <div class="card-body ">
+<h1>¿Desea eliminar la prueba de nombre {{ test.title }} ?</h1>
+
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary rounded btn-flat btnre">
+                    <i class="fas fa-save"></i> Eliminar registro
+                </button>
+                <a href="{% url 'all_test_site' testsites.id_test_s %}" class="btn btn-danger rounded btn-flat">
+                    <i class="fas fa-times"></i> Cancelar
+                </a>
+            </div>
+        </div>
+
+    </form>
+
+
+{% endblock %}

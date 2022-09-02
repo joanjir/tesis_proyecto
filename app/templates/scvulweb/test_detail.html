@@ -1,0 +1,213 @@
+{% extends 'base/body.html' %}
+
+{% block title %}
+    Detalles de prueba     ({{ test.title }})
+    | Sistema para la correlación de vulnerabilidades webs
+{% endblock title %}
+
+{% block title_list %}
+    Listado de pruebas a las aplicaciones webs
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header p-2">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#detail" data-toggle="tab">Detalle de la prueba</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#report" data-toggle="tab">Reportes de herramientas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#vuln" data-toggle="tab">Vulnerabilidades detectadas</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="active tab-pane" id="detail">
+                            <!-- The detail -->
+                            <div class="row">
+                                <div class="col-md-8">
+
+                                    <div class="card card-primary">
+                                        <div class="card-header p-2">
+                                            <h5> Descripción
+                                            </h5>
+                                        </div>
+                                        <!-- /.card-header -->
+                                        <div class="card-body">
+                                            {% if not test.description %}
+                                                No hay descripción
+                                            {% else %}
+                                                {{ test.description }}
+                                            {% endif %}
+
+                                            <!-- /.tab-content -->
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+
+
+                                </div>
+                                <!-- /.col -->
+
+                                <div class="col-md-4">
+                                    <!-- datos de la prueba -->
+
+                                    <div class="card card-primary ">
+                                        <div class="card-header ">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <h5 class="fas fa-info">
+                                                    </h5>
+
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <h5 class=" text-center ">Detalles de la prueba</h5>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="card-body p-0">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <tbody>
+
+                                                    <tr>
+                                                        <td style="width: 150px;"><strong>
+                                                            <font style="vertical-align: inherit;">Titulo </font>
+                                                        </strong></td>
+                                                        <td>
+                                                            <font style="vertical-align: inherit;">
+
+                                                                {{ test.title }}
+                                                            </font>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>
+                                                            <font style="vertical-align: inherit;">fechas Inicio</font>
+                                                        </strong></td>
+                                                        <td>
+                                                            <font style="vertical-align: inherit;">
+
+                                                                {{ test.target_start }}
+                                                            </font>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>
+                                                            <font style="vertical-align: inherit;">fechas Cierre</font>
+                                                        </strong></td>
+                                                        <td>
+                                                            <font style="vertical-align: inherit;">
+
+                                                                {{ test.target_end }}
+                                                            </font>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <strong>
+                                                                <font style="vertical-align: inherit;">
+
+                                                                    Creada por
+                                                                </font>
+                                                            </strong>
+                                                        </td>
+                                                        <td>
+                                                            <font style="vertical-align: inherit;">
+
+                                                                (administración)
+
+                                                            </font>
+                                                        </td>
+                                                    </tr>
+
+
+                                                    <tr>
+                                                        <td><strong>
+                                                            <font style="vertical-align: inherit;">Actualizado </font>
+                                                        </strong></td>
+                                                        <td>
+                                                            <font style="vertical-align: inherit;">
+                                                                {{ test.updated }}
+
+
+                                                            </font>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>
+                                                            <font style="vertical-align: inherit;">Creado </font>
+                                                        </strong></td>
+                                                        <td>
+                                                            <font style="vertical-align: inherit;">
+                                                                {{ test.created }}
+
+
+                                                            </font>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+
+
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.tab-pane -->
+
+                        <!-- the reports -->
+                        <div class=" tab-pane" id="report">
+                            <div class="card card-primary">
+                                <div class="card-header ">
+                                    <h3 class="card-title">
+                                        Listado de reportes de vulnerabilidad de {{ test.title }}
+                                    </h3>
+                                </div>
+                                <div class="card-body">
+                                    {% include "scvulweb/report_tool_test_list.html" %}
+                                    <div class="card-body">
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="{%url 'report_tool_test_add' test.id_test %}" class="btn btn-primary btn-flat btnTest">
+                                        <i class="fas fa-plus"></i> Nuevo registro
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- /.tab-pane -->
+                        </div>
+
+                        <div class="tab-pane" id="vuln">
+
+                        </div>
+                        <!-- /.tab-pane -->
+                    </div>
+                    <!-- /.tab-content -->
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
+{% endblock %}
